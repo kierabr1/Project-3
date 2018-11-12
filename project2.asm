@@ -1,12 +1,12 @@
 .data
-str:
- .space 64  #sets aside 64 bytes
+str: .space 1000  #sets aside 1000 bytes
+strArray : .space 10
 .text
 
 main:
 li $v0, 8     #takes user input
 la $a0, str  #stores string in register
-li $a1, 64   
+li $a1, 1000   
 loop:
 
 li $v0, 1
