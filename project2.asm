@@ -1,6 +1,9 @@
 .data
 str: .space 1000  #sets aside 1000 bytes
 strArray : .space 10
+Isempty: .asciiz "Input is empty."
+IsInvalid: .asciiz "Invalid base-30 number."
+infoMessage: .asciiz "This is the length of the input."
 .text
 
 main:
