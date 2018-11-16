@@ -25,8 +25,11 @@ IsInvalidMessage:    #Prints error message that there is an invalid base number
 	syscall
 	j exit
 	
-	MessageTooLongError:
+	MessageTooLongError: #Prints error message that the user input is too long
 	la $a0, MessageTooLong
+	li $v0,4
+	syscall
+	j exit
 loop:
 li $v0, 1
 la $s0, 4   #stores integer in register
