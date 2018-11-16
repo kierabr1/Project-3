@@ -4,6 +4,9 @@ strArray : .space 10
 Isempty: .asciiz "Input is empty."
 IsInvalid: .asciiz "Invalid base-30 number."
 infoMessage: .asciiz "This is the length of the input."
+messageTooLong: .aciiz "Your input is too long."
+#delta: .byte 'T'
+#beta: .byte 't'
 .text
 
 main:
@@ -11,7 +14,6 @@ li $v0, 8     #takes user input
 la $a0, str  #stores string in register
 li $a1, 1000   
 loop:
-
 li $v0, 1
 la $s0, 4   #stores integer in register
 bne $a0, $s0, exit  #compares integer to string size 
