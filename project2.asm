@@ -16,7 +16,12 @@ li $a1, 1000
 IsEmptyMessage:
 	la $a0, IsEmpty
 	li $v0, 4
-	syscall  
+	syscall
+j exit
+	
+IsInvalidMessage:    #Prints error message that there is an invalid base number
+	la $a0, IsInvalid
+	li $v0, 4 
 loop:
 li $v0, 1
 la $s0, 4   #stores integer in register
