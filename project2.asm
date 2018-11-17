@@ -24,6 +24,11 @@ FindLength:   #Count the characters in the string
 	addi $t0, $t0, 0  #Initialize count to zero
 	addi $t1, $t1, 10  #adds character to t1
 	add $t4, $t4, $a0 
+LengthLoop:
+	lb $t2, 0($a0)   #Load the character to t2
+	beqz $t2, TerminateLoop   #End loop if null
+	beq $t2, $t1, TerminateLoop   #End loop if end-of-line 
+	addi $a0, $a0, 1   #Increment 
 
 IsEmptyMessage:
 	la $a0, IsEmpty
