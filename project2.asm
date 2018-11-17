@@ -34,7 +34,7 @@ LengthLoop:
 
 TerminateLoop:
 	beqz $t0, EmptyError   #Branch to null error if length is 0
-	slti $t3, $t0, 5      #Check that count is less than 5
+	slti $t5, $t0, 5      #Check that count is less than 5
 
 IsEmptyMessage:
 	la $a0, IsEmpty
@@ -53,7 +53,10 @@ IsInvalidMessage:    #Prints error message that there is an invalid base number
 	li $v0,4
 	syscall
 	j exit
-loop:
+Qualifications:
+	lb $t3, 0($a0)
+	beqz $t3, conversionInitializations  #End loop if null character is reached
+	beq $t3, $t1, conversionInitializations  #End loop if end-of-line character is detected
 	 
  
 li $v0, 10  //exit call
