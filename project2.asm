@@ -20,6 +20,11 @@ RemoveFirstSpaces:  #Remove leading spaces
 removeFirstSpace:   #Removes one space
 	addi $a0, $a0, 1
 	j removeFirstSpace
+FindLength:   #Count the characters in the string
+	addi $t0, $t0, 0  #Initialize count to zero
+	addi $t1, $t1, 10  #adds character to t1
+	add $t4, $t4, $a0 
+
 IsEmptyMessage:
 	la $a0, IsEmpty
 	li $v0, 4
