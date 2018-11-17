@@ -63,6 +63,9 @@ Qualifications:
 	bne $t6, $zero, NextStep
 	slti $t6, $t3, 65    #Checks if the character is less than 65
 	bne $t6, $zero, baseError
+	slti $t6, $t3, 97    #Checks if the character is less than 97
+	bne $t6, $zero, baseError
+	slti $t6, $t3, 116  #Checks if the character is less than 116
 
  
 li $v0, 10  //exit call
