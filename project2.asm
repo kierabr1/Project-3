@@ -29,6 +29,12 @@ LengthLoop:
 	beqz $t2, TerminateLoop   #End loop if null
 	beq $t2, $t1, TerminateLoop   #End loop if end-of-line 
 	addi $a0, $a0, 1   #Increment 
+	addi $t0, $t0, 1
+	j LengthLoop
+
+TerminateLoop:
+	beqz $t0, EmptyError   #Branch to null error if length is 0
+	slti $t3, $t0, 5      #Check that count is less than 5
 
 IsEmptyMessage:
 	la $a0, IsEmpty
