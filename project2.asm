@@ -3,16 +3,18 @@ str: .space 1000  #sets aside 1000 bytes
 strArray : .space 10
 Isempty: .asciiz "Input is empty."
 IsInvalid: .asciiz "Invalid base-30 number."
-infoMessage: .asciiz "This is the length of the input."
 messageTooLong: .aciiz "Your input is too long."
-#delta: .byte 'T'
-#beta: .byte 't'
 .text
 
 main:
 li $v0, 8     #takes user input
 la $a0, str  #stores string in register
 li $a1, 1000 
+RemoveFirstSpaces:  #Remove leading spaces
+	li $t8, 32      #Save space character to t8
+	lb $t9, 0($a0)
+	beq $t8, $t9, removeFirstSpace #remove space if dtected
+	move $t9, $a0
 IsEmptyMessage:
 	la $a0, IsEmpty
 	li $v0, 4
@@ -31,9 +33,7 @@ IsInvalidMessage:    #Prints error message that there is an invalid base number
 	syscall
 	j exit
 loop:
-li $v0, 1
-la $s0, 4   #stores integer in register
-bne $a0, $s0, exit  #compares integer to string size 
+	 
  
 li $v0, 10  //exit call
 syscall
