@@ -80,6 +80,14 @@ ConversionInitializations:
 	li $s2, 2
 	li $s1, 1
 	li $s5, 0
+ZeroPower:
+
+FirstPower:
+
+SecondPower:
+
+Third Power:
+
  
 exit:
 li $v0, 10  //exit call
