@@ -57,7 +57,10 @@ Qualifications:
 	lb $t3, 0($a0)
 	beqz $t3, conversionInitializations  #End loop if null character is reached
 	beq $t3, $t1, conversionInitializations  #End loop if end-of-line character is detected
-	 
+	slti $t6, $t5, 48    #Checks if the character is less than 0 
+	bne $t6, $zero, baseError
+	slti $t6, $t5, 58    #Checks if the character is less than 58->9 
+	bne $t6, $zero, NextStep
  
 li $v0, 10  //exit call
 syscall
