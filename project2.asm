@@ -75,6 +75,11 @@ Qualifications:
 NextStep:
 	addi $a0, $a0, 1 #moves on to the next char
 	j  checkString
+ConversionInitializations:
+	li $s3, 3	#stores exponents in registers
+	li $s2, 2
+	li $s1, 1
+	li $s5, 0
  
 exit:
 li $v0, 10  //exit call
