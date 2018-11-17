@@ -71,7 +71,12 @@ Qualifications:
 	bne $t6, $zero, NextStep
 	bgt $t3, 120, baseError   #Checks if the character is greater than 116
 
+	
+NextStep:
+	addi $a0, $a0, 1 #moves on to the next char
+	j  checkString
  
+exit:
 li $v0, 10  //exit call
 syscall
 
