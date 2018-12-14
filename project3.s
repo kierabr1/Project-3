@@ -69,10 +69,12 @@ GoToStart:
 
 addi $t2, $t2, -1                       # aligning the pointer with the first character found in the string
 
-FindLength:   #Count the characters in the string
-	addi $t0, $t0, 0  #Initialize count to zero
-	addi $t1, $t1, 10  #adds character to t1
-	add $t4, $t4, $a0 
+LengthCount:   #Count the characters in the string
+	lb $s2, ($t2)
+	addi $t2, $t2, 1  #Increment counter and pointer
+	addi $t4, $t4, 1  
+	beq $s2, 0, ResetButtonTwo         # looking for end of the string
+    beq $s2, 10, ResetButtonTwo
 LengthLoop:
 	lb $t2, 0($a0)   #Load the character to t2
 	beqz $t2, TerminateLoop   #End loop if null
