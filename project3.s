@@ -1,15 +1,19 @@
 .data
 str: .space 1000  #sets aside 1000 bytes
-strArray : .space 10
-Isempty: .asciiz "Input is empty."
+IsEmpty: .asciiz "Input is empty."
 IsInvalid: .asciiz "Invalid base-30 number."
 messageTooLong: .aciiz "Your input is too long."
+
 .text
 
 main:
 li $v0, 8     #takes user input
 la $a0, str  #stores string in register
 li $a1, 1000 
+syscall
+
+add $s2, $0, 0   #initializing registers
+$t4, $0, 0		#counter
 RemoveFirstSpaces:  #Remove leading spaces
 	li $t8, 32      #Save space character to t8
 	lb $t9, 0($a0)
