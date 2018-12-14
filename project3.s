@@ -61,6 +61,14 @@ resetButtonOne:
        sub $t2, $t2, $t4               # restart the pointer
        la $t4, 0                       # restart the counter
 
+GoToStart:
+       lb $s2, 0($t2)                   # Loops and skips over any
+       addi $t2, $t2, 1        
+       beq $s2, 32, GoToStart        # this line stops looping when it detects a character
+
+
+addi $t2, $t2, -1                       # aligning the pointer with the first character found in the string
+
 FindLength:   #Count the characters in the string
 	addi $t0, $t0, 0  #Initialize count to zero
 	addi $t1, $t1, 10  #adds character to t1
