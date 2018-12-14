@@ -56,6 +56,7 @@ CheckValidityTwo:                  # Check to see if there is another set of cha
        beq $s2, 0, resetButtonOne    #Once end of the string is reached, reset pointer
        beq $s2, 10, resetButtonOne 
 	   bne $s2, 32, InvalidBaseError    # once a character is found after a space is already found, then an error is called
+	   j CheckValidityTwo
 
 resetButtonOne:
        sub $t2, $t2, $t4               # restart the pointer
@@ -87,6 +88,11 @@ ResetButtonTwo:                              # resets pointer to the start of st
        sub $s4, $t4, $s3     #decremented and stored in $s4
 
 move $s5, $t4 puts length into $s5
+
+HighPow:          #finding the higher power
+       beq $s4, 0, AlmostThere         
+       mult $s3, $s1            # Multiplying power by base number
+       mflo $s3           #stores value in $s3
 
 IsEmptyMessage:
 	la $a0, IsEmpty
