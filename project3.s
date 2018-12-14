@@ -93,6 +93,12 @@ HighPow:          #finding the higher power
        beq $s4, 0, AlmostThere         
        mult $s3, $s1            # Multiplying power by base number
        mflo $s3           #stores value in $s3
+	   sub $s4, $s4, 1       #decrements power           
+       j HighPow
+
+AlmostThere:
+       jal ConvertTheString
+       move $a0, $v0                   # moves sum to $a0 and prints
 
 IsEmptyMessage:
 	la $a0, IsEmpty
