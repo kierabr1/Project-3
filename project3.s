@@ -42,6 +42,9 @@ RemoveLeftSpaces:  #Remove leading spaces
 	
 CheckValidityOne:                        # This label iterates through the string until a space, new line, or nothing is detected 
        lb $s2, 0($t2)
+	   addi $t2, $t2, 1			#increment counter and pointer
+       addi $t4, $t4, 1
+       beq $s2, 10, resetButtonOne  #restart if newline is found    
 FindLength:   #Count the characters in the string
 	addi $t0, $t0, 0  #Initialize count to zero
 	addi $t1, $t1, 10  #adds character to t1
