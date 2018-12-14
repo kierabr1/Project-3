@@ -86,6 +86,8 @@ ResetButtonTwo:                              # resets pointer to the start of st
        lb $s2, 0($t2)                   # load first byte
        sub $s4, $t4, $s3     #decremented and stored in $s4
 
+move $s5, $t4 puts length into $s5
+
 IsEmptyMessage:
 	la $a0, IsEmpty
 	li $v0, 4
