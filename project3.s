@@ -78,17 +78,13 @@ LengthCount:   #Count the characters in the string
 	beq $s2, 32, ResetButtonTwo
     beq $t4, 5, MessageTooLongError     #if more than 4 characters found, Error is called    
     j LengthCount
-LengthLoop:
-	lb $t2, 0($a0)   #Load the character to t2
-	beqz $t2, TerminateLoop   #End loop if null
-	beq $t2, $t1, TerminateLoop   #End loop if end-of-line 
-	addi $a0, $a0, 1   #Increment 
-	addi $t0, $t0, 1
-	j LengthLoop
 
-TerminateLoop:
-	beqz $t0, EmptyError   #Branch to null error if length is 0
-	slti $t5, $t0, 5      #Check that count is less than 5
+
+ResetButtonTwo:                              # resets pointer to the start of string
+       sub $t2, $t2, $t4
+       sub $t4, $t4, $s3                # subtracts 1 from counter / length
+       lb $s2, 0($t2)                   # load first byte
+       sub $s4, $t4, $s3     #decremented and stored in $s4
 
 IsEmptyMessage:
 	la $a0, IsEmpty
