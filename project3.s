@@ -33,14 +33,15 @@ CheckIfEmpty:
 
             
 RemoveLeftSpaces:  #Remove leading spaces
-	li $t8, 32      #Save space character to t8
 	lb $s2, 0($t2)
 	addi $t2, $t2, 1  #increase counter and pointer
 	addi $t4, $t4, 1
+	beq $s2, 32, RemoveLeftSpaces
 	beq $s2, 0, IsEmptyError
 	beq $s2, 10, IsEmptyError
 	
-	j removeFirstSpace
+CheckValidityOne:                        # This label iterates through the string until a space, new line, or nothing is detected 
+       lb $s2, 0($t2)
 FindLength:   #Count the characters in the string
 	addi $t0, $t0, 0  #Initialize count to zero
 	addi $t1, $t1, 10  #adds character to t1
