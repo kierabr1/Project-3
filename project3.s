@@ -99,6 +99,10 @@ HighPow:          #finding the higher power
 AlmostThere:
        jal ConvertTheString
        move $a0, $v0                   # moves sum to $a0 and prints
+	   li $v0, 1                       # prints result
+       syscall
+       li $v0, 10                       #  end program
+       syscall
 
 IsEmptyMessage:
 	la $a0, IsEmpty
