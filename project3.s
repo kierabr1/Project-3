@@ -74,7 +74,10 @@ LengthCount:   #Count the characters in the string
 	addi $t2, $t2, 1  #Increment counter and pointer
 	addi $t4, $t4, 1  
 	beq $s2, 0, ResetButtonTwo         # looking for end of the string
-    beq $s2, 10, ResetButtonTwo
+    beq $s2, 10, ResetButtonTwo	  #if end is found, reset the pointer again
+	beq $s2, 32, ResetButtonTwo
+    beq $t4, 5, MessageTooLongError     #if more than 4 characters found, Error is called    
+    j LengthCount
 LengthLoop:
 	lb $t2, 0($a0)   #Load the character to t2
 	beqz $t2, TerminateLoop   #End loop if null
