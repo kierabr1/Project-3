@@ -27,12 +27,15 @@ addi $t8, $0, 0
 la $t2, str              # loads input into register $t2
 CheckIfEmpty:
        lb $s2, 0($t2)   # loads first element of string into register $s2
-RemoveFirstSpaces:  #Remove leading spaces
+	   beq $s2, 10, IsEmptyError       # If the first element is a newline or nothing then the string is empty
+       beq $s2, 0, IsEmptyError		
+
+
+            
+RemoveLefttSpaces:  #Remove leading spaces
 	li $t8, 32      #Save space character to t8
-	lb $t9, 0($a0)
-	beq $t8, $t9, removeFirstSpace #remove space if dtected
-	move $t9, $a0
-	j Qualifications
+	lb $s2, 0($t2)
+	beq $s2, $t8, removeLeftSpace #remove space if detected
 
 removeFirstSpace:   #Removes one space
 	addi $a0, $a0, 1
