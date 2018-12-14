@@ -55,6 +55,12 @@ CheckValidityTwo:                  # Check to see if there is another set of cha
 	   addi $t4, $t4, 1         # incrementing counter	
        beq $s2, 0, resetButtonOne    #Once end of the string is reached, reset pointer
        beq $s2, 10, resetButtonOne 
+	   bne $s2, 32, InvalidBaseError    # once a character is found after a space is already found, then an error is called
+
+resetButtonOne:
+       sub $t2, $t2, $t4               # restart the pointer
+       la $t4, 0                       # restart the counter
+
 FindLength:   #Count the characters in the string
 	addi $t0, $t0, 0  #Initialize count to zero
 	addi $t1, $t1, 10  #adds character to t1
