@@ -104,12 +104,17 @@ AlmostThere:
        li $v0, 10                       #  end program
        syscall
 
+ConvertTheString:
+       addi $sp, $sp, -8               # allocate memory for stack
+       sw $ra, 0($sp)                   # store the return address
+       sw $s2, 4($sp)                   # store the byte
+       beq $s7, $s5, EndOfRecursion            # base case
+
 IsEmptyMessage:
 	la $a0, IsEmpty
 	li $v0, 4
 	syscall
 j exit
-	
 IsInvalidMessage:    #Prints error message that there is an invalid base number
 	la $a0, IsInvalid
 	li $v0, 4
