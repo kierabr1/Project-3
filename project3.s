@@ -19,7 +19,14 @@ addi $s7, $0, 0  #pointer
 addi $s1, $0, 30          #Base number
 addi $t5, $0, 0
 addi $s3, $0, 1     
+addi $t6, $0, 0
+addi $t8, $0, 0
+        
 
+                                
+la $t2, str              # loads input into register $t2
+CheckIfEmpty:
+       lb $s2, 0($t2)   # loads first element of string into register $s2
 RemoveFirstSpaces:  #Remove leading spaces
 	li $t8, 32      #Save space character to t8
 	lb $t9, 0($a0)
