@@ -13,7 +13,13 @@ li $a1, 1000
 syscall
 
 add $s2, $0, 0   #initializing registers
-$t4, $0, 0		#counter
+add $t4, $0, 0	 #counter
+addi $s7, $0, 0  #pointer
+
+addi $s1, $0, 30          #Base number
+addi $t5, $0, 0
+addi $s3, $0, 1     
+
 RemoveFirstSpaces:  #Remove leading spaces
 	li $t8, 32      #Save space character to t8
 	lb $t9, 0($a0)
