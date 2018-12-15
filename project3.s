@@ -85,11 +85,11 @@ LengthCount:   #Count the characters in the string
 
 ResetButtonTwo:                              # resets pointer to the start of string
        sub $t2, $t2, $t4
-       sub $t4, $t4, $s3                # subtracts 1 from counter / length
-       lb $s2, 0($t2)                   # load first byte
-       sub $s4, $t4, $s3     #decremented and stored in $s4
+       sub $t4, $t4, $s7                # subtracts 1 from counter / length
+       lb $s5, 0($t2)                   # load first byte
+       sub $s4, $t4, $s7     #decremented and stored in $s4
 
-move $s5, $t4 puts length into $s5
+move $s6, $t4 puts length into $s5
 
 HighPow:          #finding the higher power
        beq $s4, 0, AlmostThere         
