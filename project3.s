@@ -89,7 +89,7 @@ ResetButtonTwo:                              # resets pointer to the start of st
        lb $s5, 0($t2)                   # load first byte
        sub $s4, $t4, $s7     #decremented and stored in $s4
 
-move $s6, $t4 puts length into $s5
+move $s6, $t4 #puts length into $s5
 
 HighPow:          #finding the higher power
        beq $s4, 0, AlmostThere         
@@ -151,7 +151,7 @@ ConvertTheString:
 
 	 Next:
 		mul $s5, $s5, $s7	# ascii value of byte multiplied by base ^pow
-		div $s7, $s7, 31	# decrement the power 
+		div $s7, $s7, 30	# decrement the power 
 		
 		addi $sp, $sp, -16	
 		sw $s5, 0($sp) #character/byte
@@ -201,7 +201,7 @@ InvalidMessage:    #Prints error message that there is an invalid base number
 
 	
 MessageTooLongError: #Prints error message that the user input is too long
-la $a0, MessageTooLong
+la $a0, messageTooLong
 li $v0,4
 syscall
 	
@@ -209,7 +209,7 @@ syscall
 	syscall
 
 Base_or_Len_Error:	
-	bge $t6, 4, messageTooLongError	# checks length to see if error can be called	
+	bge $t6, 4, messageTooLong	# checks length to see if error can be called	
 	j InvalidMessage	# if the length is valid, then base error is called
  
 	jr $ra
