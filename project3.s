@@ -164,7 +164,11 @@ ConvertTheString:
 			li $v0, 0	
 			lw $ra, 0($sp)	#deallocating memory in the stack
 			lw $s5, 4($sp)	
-			addi $sp, $sp, 8            
+			addi $sp, $sp, 8    
+			addi $sp, $sp, -4
+			sw $v0, 0($sp)
+			
+			jr $ra # jumps to the return address        
 
 IsEmptyMessage:
 	la $a0, IsEmpty
