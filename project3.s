@@ -53,9 +53,9 @@ CheckValidityTwo:                  # Check to see if there is another set of cha
        lb $s5, 0($t2)                  
        addi $t2, $t2, 1         # increment pointer  
 	   addi $t4, $t4, 1         # incrementing counter	
-       beq $s2, 0, resetButtonOne    #Once end of the string is reached, reset pointer
-       beq $s2, 10, resetButtonOne 
-	   bne $s2, 32, InvalidBaseError    # once a character is found after a space is already found, then an error is called
+       beq $s5, 0, resetButtonOne    #Once end of the string is reached, reset pointer
+       beq $s5, 10, resetButtonOne 
+	   bne $s5, 32, InvalidBaseError    # once a character is found after a space is already found, then an error is called
 	   j CheckValidityTwo
 
 resetButtonOne:
@@ -63,9 +63,9 @@ resetButtonOne:
        la $t4, 0                       # restart the counter
 
 GoToStart:
-       lb $s2, 0($t2)                   # Loops and skips over any
+       lb $s5, 0($t2)                   # Loops and skips over any
        addi $t2, $t2, 1        
-       beq $s2, 32, GoToStart        # this line stops looping when it detects a character
+       beq $s5, 32, GoToStart        # this line stops looping when it detects a character
 
 
 addi $t2, $t2, -1                       # aligning the pointer with the first character found in the string
