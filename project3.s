@@ -28,17 +28,17 @@ la $t2, str              # loads input into register $t2
 CheckIfEmpty:
        lb $s5, 0($t2)   # loads first element of string into register $s2
 	   beq $s5, 10, IsEmptyError       # If the first element is a newline or nothing then the string is empty
-       beq $s2, 0, IsEmptyError		
+       beq $s5, 0, IsEmptyError		
 
 
             
 RemoveLeftSpaces:  #Remove leading spaces
-	lb $s2, 0($t2)
+	lb $s5, 0($t2)
 	addi $t2, $t2, 1  #increase counter and pointer
 	addi $t4, $t4, 1
-	beq $s2, 32, RemoveLeftSpaces
-	beq $s2, 0, IsEmptyError
-	beq $s2, 10, IsEmptyError
+	beq $s5, 32, RemoveLeftSpaces
+	beq $s5, 0, IsEmptyError
+	beq $s5, 10, IsEmptyError
 	
 CheckValidityOne:                        # This label iterates through the string until a space, new line, or nothing is detected 
        lb $s2, 0($t2)
