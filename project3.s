@@ -184,12 +184,12 @@ ConvertTheString:
 			
 			jr $ra # jumps to the return address        
 #Errors
-IsEmptyMessage:
+IsEmptyError:
 	la $a0, IsEmpty
 	li $v0, 4
 	syscall
 
-IsInvalidMessage:    #Prints error message that there is an invalid base number
+InvalidMessage:    #Prints error message that there is an invalid base number
 	la $a0, IsInvalid
 	li $v0, 4
 	syscall
@@ -201,3 +201,8 @@ li $v0,4
 syscall
 	
 
+Base_or_Len_Error:	
+	bge $t6, 4, messageTooLongError	# checks length to see if error can be called	
+	j InvalidMessage	# if the length is valid, then base error is called
+ 
+	jr $ra
