@@ -166,6 +166,13 @@ ConvertTheString:
 	 
 		lw $ra, 0($sp)	
 		lw $s5, 4($sp)	
+		addi $sp, $sp, 8	# deallocating memory in the stack
+		
+		addi $sp, $sp, -4
+		sw $v0, 0($sp)
+	 
+		jr $ra	# jumps to the return address
+
 
 		ReturnBack:  #end of recursion
 			li $v0, 0	
