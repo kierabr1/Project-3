@@ -73,12 +73,12 @@ GoToStart:
 addi $t2, $t2, -1                       # aligning the pointer with the first character found in the string
 
 LengthCount:   #Count the characters in the string
-	lb $s2, ($t2)
+	lb $s5, ($t2)
 	addi $t2, $t2, 1  #Increment counter and pointer
 	addi $t4, $t4, 1  
-	beq $s2, 0, ResetButtonTwo         # looking for end of the string
-    beq $s2, 10, ResetButtonTwo	  #if end is found, reset the pointer again
-	beq $s2, 32, ResetButtonTwo
+	beq $s5, 0, ResetButtonTwo         # looking for end of the string
+    beq $s5, 10, ResetButtonTwo	  #if end is found, reset the pointer again
+	beq $s5, 32, ResetButtonTwo
     beq $t4, 5, MessageTooLongError     #if more than 4 characters found, Error is called    
     j LengthCount
 
