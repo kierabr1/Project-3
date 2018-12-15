@@ -188,6 +188,8 @@ IsEmptyError:
 	la $a0, IsEmpty
 	li $v0, 4
 	syscall
+	li $v0, 10
+	syscall
 
 InvalidMessage:    #Prints error message that there is an invalid base number
 	la $a0, IsInvalid
