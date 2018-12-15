@@ -128,7 +128,12 @@ ConvertTheString:
 	   lb $s5, 0($t2) #loads first character into $s5
 	   addi $t2, $t2, 1	# increment pointer and counter
 	   addi $s1, $s1, 1	
-       beq $s7, $s5, ReturnBack            # base case
+       
+	   blt $s5, 48, InvalidMessage # is character is before the number 0 in ASCII chart, invalid if so
+	   blt $s5, 58, numbers # is character is between 48 and 57, valid if true
+	   blt $s5, 65, InvalidMessage # is character is between 58 and 64, invalid if so
+	   blt $s5, 85, capitalLetters # is character is between 65 and 85, valid if so
+	   blt $s5, 97, InvalidMessage # is character is between 76 and 96, invalid if so, out of bounds
 	
                      
 
