@@ -194,12 +194,17 @@ InvalidMessage:    #Prints error message that there is an invalid base number
 	li $v0, 4
 	syscall
 
+	li $v0, 10 #terminates program
+	syscall
+
 	
 MessageTooLongError: #Prints error message that the user input is too long
 la $a0, MessageTooLong
 li $v0,4
 syscall
 	
+	li $v0, 10 #terminates program
+	syscall
 
 Base_or_Len_Error:	
 	bge $t6, 4, messageTooLongError	# checks length to see if error can be called	
