@@ -123,6 +123,11 @@ ConvertTheString:
 
 	   addi $sp, $sp, -8
 	   sw $ra, 0($sp)
+	   sw $s5, 4($sp)
+	   beq $s1, $s6, ReturnBack	# BaseCase
+	   lb $s5, 0($t2) #loads first character into $s5
+	   addi $t2, $t2, 1	# increment pointer and counter
+	   addi $s1, $s1, 1	
        beq $s7, $s5, ReturnBack            # base case
 	
                      
