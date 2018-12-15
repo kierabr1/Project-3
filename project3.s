@@ -132,16 +132,21 @@ ConvertTheString:
 	   blt $s5, 48, InvalidMessage # is character is before the number 0 in ASCII chart, invalid if so
 	   blt $s5, 58, numbers # is character is between 48 and 57, valid if true
 	   blt $s5, 65, InvalidMessage # is character is between 58 and 64, invalid if so
-	   blt $s5, 85, capitalLetters # is character is between 65 and 85, valid if so
+	   blt $s5, 85, capitalLetters # is character is between 65 and 84, valid if so
 	   blt $s5, 97, InvalidMessage # is character is between 76 and 96, invalid if so, out of bounds
-	   blt $s5, 117, regLetters # is character is between 97 and 117, valid if so
+	   blt $s5, 117, regLetters # is character is between 97 and 116, valid if so
 	   blt $s5, 128, InvalidMessage # is character is between 118 and 127, invalid if so
 
 	#subtract the ascii value from these values to get the actual value represented under base 30
 	 capitalLetters:
 		addi $s5, $s5, -55	
 		j Next			# 'A' in base 30 = 10, 65 - 55 = 10
-                     
+	regLetters:
+		addi $s5, $s5, -87	
+		j Next
+	 
+	 numbers:
+		 addi $s5, $s5, -48 	             
 
 IsEmptyMessage:
 	la $a0, IsEmpty
