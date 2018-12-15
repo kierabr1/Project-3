@@ -153,7 +153,13 @@ ConvertTheString:
 		mul $s5, $s5, $s7	# ascii value of byte multiplied by base ^pow
 		div $s7, $s7, 31	# decrement the power 
 		
-		addi $sp, $sp, -16	             
+		addi $sp, $sp, -16	
+		sw $s5, 0($sp) #character/byte
+		sw $t2, 4($sp) #address
+		sw $s1, 8($sp) #power/ exponent
+		sw $s6, 12($sp) #length 
+		
+		jal ConvertTheString  #loop through recursion             
 
 IsEmptyMessage:
 	la $a0, IsEmpty
