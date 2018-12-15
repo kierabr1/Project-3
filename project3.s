@@ -12,13 +12,13 @@ la $a0, str  #stores string in register
 li $a1, 1000 
 syscall
 
-add $s2, $0, 0   #initializing registers
+add $s5, $0, 0   #initializing registers
 add $t4, $0, 0	 #counter
-addi $s7, $0, 0  #pointer
+addi $s1, $0, 0  #pointer
 
-addi $s1, $0, 30          #Base number
-addi $t5, $0, 0
-addi $s3, $0, 1     
+addi $t3, $0, 0          #Base number
+addi $s7, $0, 1
+addi $s2, $0, 0     
 addi $t6, $0, 0
 addi $t8, $0, 0
         
