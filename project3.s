@@ -146,7 +146,14 @@ ConvertTheString:
 		j Next
 	 
 	 numbers:
-		 addi $s5, $s5, -48 	             
+		 addi $s5, $s5, -48 
+		 j Next
+
+	 Next:
+		mul $s5, $s5, $s7	# ascii value of byte multiplied by base ^pow
+		div $s7, $s7, 31	# decrement the power 
+		
+		addi $sp, $sp, -16	             
 
 IsEmptyMessage:
 	la $a0, IsEmpty
