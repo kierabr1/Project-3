@@ -183,60 +183,21 @@ ConvertTheString:
 			sw $v0, 0($sp)
 			
 			jr $ra # jumps to the return address        
-
+#Errors
 IsEmptyMessage:
 	la $a0, IsEmpty
 	li $v0, 4
 	syscall
-j exit
+
 IsInvalidMessage:    #Prints error message that there is an invalid base number
 	la $a0, IsInvalid
 	li $v0, 4
 	syscall
-	j exit
-	
-	MessageTooLongError: #Prints error message that the user input is too long
-	la $a0, MessageTooLong
-	li $v0,4
-	syscall
-	j exit
-Qualifications:
-	lb $t3, 0($a0)
-	beqz $t3, conversionInitializations  #End loop if null character is reached
-	beq $t3, $t1, conversionInitializations  #End loop if end-of-line character is detected
-	slti $t6, $t3, 48    #Checks if the character is less than 0 
-	bne $t6, $zero, baseError
-	slti $t6, $t3, 58    #Checks if the character is less than 58 
-	bne $t6, $zero, NextStep
-	slti $t6, $t3, 65    #Checks if the character is less than 65
-	bne $t6, $zero, baseError
-	slti $t6, $t3, 84    #Checks if the character is less than 89
-	bne $t6, $zero, NextStep
-	slti $t6, $t3, 97    #Checks if the character is less than 97
-	bne $t6, $zero, baseError
-	slti $t6, $t3, 116  #Checks if the character is less than 116
-	bne $t6, $zero, NextStep
-	bgt $t3, 120, baseError   #Checks if the character is greater than 116
 
 	
-NextStep:
-	addi $a0, $a0, 1 #moves on to the next char
-	j  checkString
-ConversionInitializations:
-	li $s3, 3	#stores exponents in registers
-	li $s2, 2
-	li $s1, 1
-	li $s5, 0
-ZeroPower:
-
-FirstPower:
-
-SecondPower:
-
-Third Power:
-
- 
-exit:
-li $v0, 10  //exit call
+MessageTooLongError: #Prints error message that the user input is too long
+la $a0, MessageTooLong
+li $v0,4
 syscall
+	
 
