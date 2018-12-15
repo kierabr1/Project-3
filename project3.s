@@ -105,10 +105,11 @@ AlmostThere:
 	   sw $s1, 8($sp)
 	   sw $s6, 12($sp)
        jal ConvertTheString
-       move $a0, $v0                   # moves sum to $a0 and prints
+       lw $a0, 0($sp)                   # loads result in $a0
+	   addi $sp, $sp, 4					#deallocate memory from stack
 	   li $v0, 1                       # prints result
        syscall
-       li $v0, 10                       #  end program
+       li $v0, 10                       # terminate program
        syscall
 
 ConvertTheString:
