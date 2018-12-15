@@ -101,6 +101,9 @@ HighPow:          #finding the higher power
 AlmostThere:
 	   addi $sp, $sp, -16  #allocating memory for the stack
 	   sw $s5, 0($sp)
+	   sw $t2, 4($sp) 		
+	   sw $s1, 8($sp)
+	   sw $s6, 12($sp)
        jal ConvertTheString
        move $a0, $v0                   # moves sum to $a0 and prints
 	   li $v0, 1                       # prints result
