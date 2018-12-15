@@ -134,7 +134,13 @@ ConvertTheString:
 	   blt $s5, 65, InvalidMessage # is character is between 58 and 64, invalid if so
 	   blt $s5, 85, capitalLetters # is character is between 65 and 85, valid if so
 	   blt $s5, 97, InvalidMessage # is character is between 76 and 96, invalid if so, out of bounds
-	
+	   blt $s5, 117, regLetters # is character is between 97 and 117, valid if so
+	   blt $s5, 128, InvalidMessage # is character is between 118 and 127, invalid if so
+
+	#subtract the ascii value from these values to get the actual value represented under base 30
+	 capitalLetters:
+		addi $s5, $s5, -55	
+		j Next			# 'A' in base 30 = 10, 65 - 55 = 10
                      
 
 IsEmptyMessage:
