@@ -108,7 +108,9 @@ ConvertTheString:
        addi $sp, $sp, -8               # allocate memory for stack
        sw $ra, 0($sp)                   # store the return address
        sw $s2, 4($sp)                   # store the byte
-       beq $s7, $s5, EndOfRecursion            # base case
+       beq $s7, $s5, ReturnBack            # base case
+	
+                     
 
 IsEmptyMessage:
 	la $a0, IsEmpty
