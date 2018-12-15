@@ -112,10 +112,11 @@ AlmostThere:
        li $v0, 10                       # terminate program
        syscall
 
-ConvertTheString:
-       addi $sp, $sp, -8               # allocate memory for stack
-       sw $ra, 0($sp)                   # store the return address
-       sw $s2, 4($sp)                   # store the byte
+.globl ConvertTheString
+ConvertTheString: 
+               # deallocate memory
+       lw $s5, 0($sp)                   # store the return address
+       lw $t2, 4($sp)                   # store the byte
        beq $s7, $s5, ReturnBack            # base case
 	
                      
