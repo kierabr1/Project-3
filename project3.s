@@ -41,16 +41,16 @@ RemoveLeftSpaces:  #Remove leading spaces
 	beq $s5, 10, IsEmptyError
 	
 CheckValidityOne:                        # This label iterates through the string until a space, new line, or nothing is detected 
-       lb $s2, 0($t2)
+       lb $s5, 0($t2)
 	   addi $t2, $t2, 1			#increment counter and pointer
        addi $t4, $t4, 1
-       beq $s2, 10, resetButtonOne  #restart if newline is found 
-	   beq $s2, 0, resetButtonOne      #restart if nothing is found
-       bne $s2, 32, CheckValidityOne    # If a space is not found, then loop
+       beq $s5, 10, resetButtonOne  #restart if newline is found 
+	   beq $s5, 0, resetButtonOne      #restart if nothing is found
+       bne $s5, 32, CheckValidityOne    # If a space is not found, then loop
 
 
 CheckValidityTwo:                  # Check to see if there is another set of characters after the space found
-       lb $s2, 0($t2)                  
+       lb $s5, 0($t2)                  
        addi $t2, $t2, 1         # increment pointer  
 	   addi $t4, $t4, 1         # incrementing counter	
        beq $s2, 0, resetButtonOne    #Once end of the string is reached, reset pointer
