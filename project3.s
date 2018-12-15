@@ -117,6 +117,12 @@ ConvertTheString:
                # deallocate memory
        lw $s5, 0($sp)                   # store the return address
        lw $t2, 4($sp)                   # store the byte
+	   lw $s1, 8($sp)
+	   lw $s6, 12($sp)
+	   addi $sp, $sp, 16
+
+	   addi $sp, $sp, -8
+	   sw $ra, 0($sp)
        beq $s7, $s5, ReturnBack            # base case
 	
                      
