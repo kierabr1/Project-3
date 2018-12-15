@@ -158,8 +158,13 @@ ConvertTheString:
 		sw $t2, 4($sp) #address
 		sw $s1, 8($sp) #power/ exponent
 		sw $s6, 12($sp) #length 
+		jal ConvertTheString  #loop through recursion 
 		
-		jal ConvertTheString  #loop through recursion             
+		ReturnBack:  #end of recursion
+			li $v0, 0	
+			lw $ra, 0($sp)	#deallocating memory in the stack
+			lw $s5, 4($sp)	
+			addi $sp, $sp, 8            
 
 IsEmptyMessage:
 	la $a0, IsEmpty
