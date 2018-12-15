@@ -18,16 +18,16 @@ addi $s1, $0, 0  #pointer
 
 addi $t3, $0, 0          #Base number
 addi $s7, $0, 1
-addi $s2, $0, 0     
+addi $s2, $0, 30    
+addi $t7, $0, 0
 addi $t6, $0, 0
-addi $t8, $0, 0
         
 
                                 
 la $t2, str              # loads input into register $t2
 CheckIfEmpty:
-       lb $s2, 0($t2)   # loads first element of string into register $s2
-	   beq $s2, 10, IsEmptyError       # If the first element is a newline or nothing then the string is empty
+       lb $s5, 0($t2)   # loads first element of string into register $s2
+	   beq $s5, 10, IsEmptyError       # If the first element is a newline or nothing then the string is empty
        beq $s2, 0, IsEmptyError		
 
 
