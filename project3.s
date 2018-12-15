@@ -44,6 +44,7 @@ CheckValidityOne:                        # This label iterates through the strin
        lb $s5, 0($t2)
 	   addi $t2, $t2, 1			#increment counter and pointer
        addi $t4, $t4, 1
+	   addi $t6, $t6, 1
        beq $s5, 10, resetButtonOne  #restart if newline is found 
 	   beq $s5, 0, resetButtonOne      #restart if nothing is found
        bne $s5, 32, CheckValidityOne    # If a space is not found, then loop
@@ -52,10 +53,11 @@ CheckValidityOne:                        # This label iterates through the strin
 CheckValidityTwo:                  # Check to see if there is another set of characters after the space found
        lb $s5, 0($t2)                  
        addi $t2, $t2, 1         # increment pointer  
-	   addi $t4, $t4, 1         # incrementing counter	
+	   addi $t4, $t4, 1		#increment counter
+	   addi $t6, $t6, 1         
        beq $s5, 0, resetButtonOne    #Once end of the string is reached, reset pointer
        beq $s5, 10, resetButtonOne 
-	   bne $s5, 32, InvalidBaseError    # once a character is found after a space is already found, then an error is called
+	   bne $s5, 32, Base_or_Len_Error    # checks for invalid or invalid base by default
 	   j CheckValidityTwo
 
 resetButtonOne:
