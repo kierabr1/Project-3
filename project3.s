@@ -160,6 +160,13 @@ ConvertTheString:
 		sw $s6, 12($sp) #length 
 		jal ConvertTheString  #loop through recursion 
 		
+		lw $v0, 0($sp)
+		addi $sp, $sp, 4 
+		add $v0, $s5, $v0	# adding the values converted
+	 
+		lw $ra, 0($sp)	
+		lw $s5, 4($sp)	
+
 		ReturnBack:  #end of recursion
 			li $v0, 0	
 			lw $ra, 0($sp)	#deallocating memory in the stack
