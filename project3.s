@@ -93,12 +93,14 @@ move $s6, $t4 puts length into $s5
 
 HighPow:          #finding the higher power
        beq $s4, 0, AlmostThere         
-       mult $s3, $s1            # Multiplying power by base number
-       mflo $s3           #stores value in $s3
+       mult $s7, $s2            # Multiplying power by base number
+       mflo $s7           #stores value in $s3
 	   sub $s4, $s4, 1       #decrements power           
        j HighPow
 
 AlmostThere:
+	   addi $sp, $sp, -16  #allocating memory for the stack
+	   sw $s5, 0($sp)
        jal ConvertTheString
        move $a0, $v0                   # moves sum to $a0 and prints
 	   li $v0, 1                       # prints result
